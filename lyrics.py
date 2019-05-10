@@ -80,7 +80,7 @@ def MiniLyrics(artist, title):
 		try:
 			result = "\x02" + chr(magickey) + "\x04\x00\x00\x00" + str(hasheddata) + bytearray(encddata).decode("utf-8")
 		except UnicodeDecodeError:
-			result = "\x02" + chr(magickey) + "\x04\x00\x00\x00" + str(hasheddata) + bytearray(encddata)
+			result = "\x02" + chr(magickey) + "\x04\x00\x00\x00" + str(hasheddata) + bytearray(encddata).decode('latin_1')
 		return (result)
 
 	search_encquery = vl_enc(search_query_base.format(artist=artist, title=title).encode("utf-8"), search_md5watermark)
