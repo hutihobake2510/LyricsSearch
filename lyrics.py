@@ -141,7 +141,10 @@ def MiniLyrics(artist, title):
 	else:
 		# Server returned possible answers
 		xml = vl_dec(search_result)
-		xml = xmltodict.parse(xml)
+		try:
+		    xml_data = xmltodict.parse(xml_data)
+		except xmltodict.expat.ExpatError:
+		    return ''
 		server_url = str(xml["return"]["@server_url"])
 		results = []
 		i = 0
